@@ -42,23 +42,11 @@ var Game = function() {
 		context.clearRect(0, 0, canvas.width, canvas.height);
 		drawTable();
 		puck.update(localPlayer);
-		localPlayer.draw();
 	}
 
 	drawTable();
 
 	puck = new Puck(350, 350, 20, canvas, context);
 	puck.draw();
-
-	localPlayer = new Pusher(350, 600, 25, canvas, context);
-	localPlayer.draw();
-
-	$('#gameCanvas').on( "mousemove", function( event ) {
-		context.clearRect(0, 0, canvas.width, canvas.height);
-		drawTable();
-		localPlayer.update(event.pageX, event.pageY);
-		puck.draw();
-	});
-
-	setInterval(update, 1);
+	console.log(puck);
 };
