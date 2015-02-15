@@ -15,36 +15,24 @@
 	<script type="text/javascript">
 		var socket = io.connect('http://localhost:3000');
 		var pencil = new Pencil();
-		
+		var playerStorage = [350, 500, 30];
 		socket.emit('entrance', {x: 350, y: 500, r: 25});
+
+		socket.on('paintPlayer', function(data){
+			context.clearRect(0, 0, canvas.width, canvas.height);
+			pencil.drawTable();
+			pencil.drawPuck(data.puck[0], data.puck[1], data.puck[2]);
+			if(data.player != null){
+				playerStorage = data.player;
+			}
+			pencil.drawPusher(playerStorage[0], playerStorage[1], playerStorage[2]);
+		});
 
 		$('#gameCanvas').on( "mousemove", function( event ) {
 			socket.emit('mouseMove', {x: event.pageX, y: event.pageY});
 		});
 
-		socket.on('printPuck', function (data) {
-			pencil.clearCanvas();
-			pencil.drawTable();
-			pencil.drawPuck(data.puck.getAll().x, data.puck.getAll().y, data.puck.getAll().r);
-			if(player1 != undefined){
-				pencil.drawPusher(data.player1.getAll().x, data.player1.getAll().y, data.player1.getAll().r);
-			}
-			if(player2 != undefined){
-				pencil.drawPusher(data.player2.getAll().x, data.player2.getAll().y, data.player2.getAll().r);
-			}
-		});
-
-		socket.on('printPlayer', function (data) {
-			pencil.clearCanvas();
-			pencil.drawTable();
-			pencil.drawPuck(data.puck.getAll().x, data.puck.getAll().y, data.puck.getAll().r);
-			if(player1 != undefined){
-				pencil.drawPusher(data.player1.getAll().x, data.player1.getAll().y, data.player1.getAll().r);
-			}
-			if(player2 != undefined){
-				pencil.drawPusher(data.player2.getAll().x, data.player2.getAll().y, data.player2.getAll().r);
-			}
-		});
+		
 
 	</script>
 </body>
