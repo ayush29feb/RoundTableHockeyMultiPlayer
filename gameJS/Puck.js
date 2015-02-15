@@ -6,12 +6,17 @@ var Puck = function (startX, startY, radius, tableR) {
 		y = startY,
 		r = radius,
 		R = tableR;
-		
-	var	velX = 5,
-		velY = 7;
+
+	var	velX = 3,
+		velY = 3;
+
+	var scoreTop = 0,
+		scoreBottom = 0;
+
 
 	var update = function(pusher1, pusher2) {
 		checkBorderCollision();
+		checkGoal();
 		if(pusher1 != undefined) { checkCollisions(pusher1); }
 		if(pusher2 != undefined) { checkCollisions(pusher2); }
 		x += velX;
@@ -25,6 +30,22 @@ var Puck = function (startX, startY, radius, tableR) {
 						(getLocalX(x) * getLocalX(x) + getLocalY(y) * getLocalY(y));
             velX = velX - c * getLocalX(x);
             velY = velY - c * getLocalY(y);
+		}
+	}
+
+	var checkGoal = function(){
+		if(x > 300 && x < 400 && y > 0 && y < 50){
+			scoreTop++;
+			x = 350;
+			y = 350;
+			velX = 5;
+			velY = 5;
+		} else if (x > 300 && x < 400 && y > 650 && y < 750){
+			scoreBottom++;
+			x = 350;
+			y = 350;
+			velX = 5;
+			velY = -5;
 		}
 	}
 

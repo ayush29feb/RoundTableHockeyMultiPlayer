@@ -11,13 +11,13 @@ var Pusher = function (startX, startY, radius, tableR, socketId, isTop) {
 
 	var update = function(mouseX, mouseY) {
 		if(top){
-			if(mouseY < R){
+			if(mouseY < R && R * R > (mouseX - R) * (mouseX - R) + (mouseY - R) * (mouseY - R)){
 				x = mouseX;
 				y = mouseY;
 			} else if (mouseY > R) {
 				x = mouseX;
-			} 
-		} else{
+			}
+		} else if(mouseY >= R && R * R > (mouseX - R) * (mouseX - R) + (mouseY - R) * (mouseY - R)){
 			if(mouseY > R){
 				x = mouseX;
 				y = mouseY;
