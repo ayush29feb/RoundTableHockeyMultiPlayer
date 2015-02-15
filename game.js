@@ -10,7 +10,7 @@ var puck,
 	timer;
 
 
-var app = connect().use(connect.static('public')).listen(3000);
+var app = connect().use(connect.static('public')).listen(3000, "0.0.0.0");
 var gameRoom = io.listen(app);
 
 puck = new Puck(350, 350, 20, 350);
