@@ -55,7 +55,7 @@ var Puck = function (startX, startY, radius, tableR) {
         var a  = Math.sqrt(X * X + Y * Y); // Magnitude of the vector from puck to pusher
         //dot product of unit distance vector
         //then the formula
-        if(a <= r + pusher.r() + 1){
+        if(a <= 1.3 * r + pusher.r() + 1){
             var c = 2 * ((velX * X + velY * Y) / (X * X + Y * Y));
             velX = velX - c * X;
             velY = velY - c * Y;
