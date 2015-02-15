@@ -1,0 +1,15 @@
+{
+  "name": "RoundTableAirHockey",
+  "version": "1.0.0",
+  "description": "Multiplayer Round Table Air Hockey on Leap Motion",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ayush Saraf <ayush29f@uw.edu>",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "1.9.2",
+    "socket.io": "0.9.6"
+  }
+}

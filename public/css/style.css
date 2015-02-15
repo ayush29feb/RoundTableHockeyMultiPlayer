@@ -1,0 +1,9 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#gameCanvas {
+	background-color: white;
+	position: fixed;
+}
