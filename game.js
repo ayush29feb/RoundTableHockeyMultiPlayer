@@ -18,7 +18,7 @@ puck = new Puck(350, 350, 20, 350);
 gameRoom.sockets.on('connection', function(socket) {
 	
 	if(timer != undefined){
-		learInterval(timer); 
+		clearInterval(timer); 
 	}
 	timer = setInterval(function(){
 		puck.update(player1, player2);
@@ -30,9 +30,9 @@ gameRoom.sockets.on('connection', function(socket) {
 
 	socket.on('entrance', function(data) {
 		if(player1 == undefined) {
-			player1 = new Pusher(data.x, data.y, data.r, 350, socket.id);
+			player1 = new Pusher(data.x, data.y, data.r, 350, socket.id, false);
 		} else if(player2 == undefined) {
-			player2 = new Pusher(data.x, data.y, data.r, 350, socket.id);
+			player2 = new Pusher(data.x, data.y, data.r, 350, socket.id, true);
 		}
 	});
 	

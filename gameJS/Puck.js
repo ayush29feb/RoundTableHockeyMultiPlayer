@@ -7,8 +7,8 @@ var Puck = function (startX, startY, radius, tableR) {
 		r = radius,
 		R = tableR;
 		
-	var	velX = 1,
-		velY = 2;
+	var	velX = 5,
+		velY = 7;
 
 	var update = function(pusher1, pusher2) {
 		checkBorderCollision();
