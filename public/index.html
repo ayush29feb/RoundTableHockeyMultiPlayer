@@ -15,17 +15,22 @@
 	<script type="text/javascript">
 		var socket = io.connect('http://localhost:3000');
 		var pencil = new Pencil();
-		var playerStorage = [350, 500, 30];
+		var playerStorage1 = [350, 500, 30]; //bottom
+		var playerStorage2 = [350, 200, 30]; //top
 		socket.emit('entrance', {x: 350, y: 500, r: 25});
 
 		socket.on('paintPlayer', function(data){
 			context.clearRect(0, 0, canvas.width, canvas.height);
 			pencil.drawTable();
 			pencil.drawPuck(data.puck[0], data.puck[1], data.puck[2]);
-			if(data.player != null){
-				playerStorage = data.player;
+			if(data.player1 != null){
+				playerStorage1 = data.player1;
 			}
-			pencil.drawPusher(playerStorage[0], playerStorage[1], playerStorage[2]);
+			if(data.player2 != null){
+				playerStorage2 = data.player2;
+			}
+			pencil.drawPusher(playerStorage1[0], playerStorage1[1], playerStorage1[2]);
+			pencil.drawPusher(playerStorage2[0], playerStorage2[1], playerStorage2[2]);
 		});
 
 		$('#gameCanvas').on( "mousemove", function( event ) {

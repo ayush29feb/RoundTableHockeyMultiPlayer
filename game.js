@@ -24,7 +24,8 @@ gameRoom.sockets.on('connection', function(socket) {
 		puck.update(player1, player2);
 		gameRoom.sockets.emit('paintPlayer', {
 			puck: [puck.getX(), puck.getY(), puck.getR()],
-			player: null
+			player1: null,
+			player2: null
 		});
 	}, 10);
 
@@ -37,16 +38,20 @@ gameRoom.sockets.on('connection', function(socket) {
 	});
 	
 	socket.on('mouseMove', function(data){
+		var result = {
+			puck: [puck.getX(), puck.getY(), puck.getR()],
+			player1: null,
+			player2: null
+		};
 		if(player1 != undefined && player1.getID() == socket.id){
 			player1.update(data.x, data.y);
-			gameRoom.sockets.emit('paintPlayer', {puck: [puck.getX(), puck.getY(), puck.getR()], 
-													player: [player1.x(), player1.y(), player1.r()]});
+			result.player1 = [player1.x(), player1.y(), player1.r()];
 		}
 		if(player2 != undefined && player2.getID() == socket.id){
 			player2.update(data.x, data.y);
-			gameRoom.sockets.emit('paintPlayer', {puck: [puck.getX(), puck.getY(), puck.getR()], 
-													player: [player2.x(), player2.y(), player2.r()]});
+			result.player2 = [player2.x(), player2.y(), player2.r()];
 		}
+		gameRoom.sockets.emit('paintPlayer', result);
 	});
 	
 
