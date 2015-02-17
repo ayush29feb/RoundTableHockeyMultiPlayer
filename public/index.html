@@ -29,6 +29,9 @@
 			if(data.player2 != null){
 				playerStorage2 = data.player2;
 			}
+			if(data.player1 != null && data.player2 != null){
+				System.out.println('Room Full!');
+			}
 			pencil.drawPusher(playerStorage1[0], playerStorage1[1], playerStorage1[2]);
 			pencil.drawPusher(playerStorage2[0], playerStorage2[1], playerStorage2[2]);
 		});
