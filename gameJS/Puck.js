@@ -38,8 +38,8 @@ var Puck = function (startX, startY, radius, tableR) {
 			scoreTop++;
 			x = 350;
 			y = 350;
-			velX = 5;
-			velY = 5;
+			velX = 10;
+			velY = -10;
 		} else if (x > 300 && x < 400 && y > 650 && y < 750){
 			scoreBottom++;
 			x = 350;
