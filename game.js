@@ -27,7 +27,7 @@ gameRoom.sockets.on('connection', function(socket) {
 			player1: null,
 			player2: null
 		});
-	}, 10);
+	}, 25);
 
 	socket.on('entrance', function(data) {
 		if(player1 == undefined) {

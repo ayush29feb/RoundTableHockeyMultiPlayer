@@ -7,8 +7,8 @@ var Puck = function (startX, startY, radius, tableR) {
 		r = radius,
 		R = tableR;
 
-	var	velX = 3,
-		velY = 3;
+	var	velX = 10,
+		velY = 10;
 
 	var scoreTop = 0,
 		scoreBottom = 0;
@@ -44,8 +44,8 @@ var Puck = function (startX, startY, radius, tableR) {
 			scoreBottom++;
 			x = 350;
 			y = 350;
-			velX = 5;
-			velY = -5;
+			velX = 10;
+			velY = -10;
 		}
 	}
 
