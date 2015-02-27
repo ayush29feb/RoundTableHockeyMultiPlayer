@@ -12,6 +12,8 @@
 	<script src = "js/game.js" type="text/javascript"></script>
 	<script src = "js/Pencil.js" type="text/javascript"></script>
 	<script src="/socket.io/socket.io.js"></script>
+	<script src="//js.leapmotion.com/leap-0.6.3.js"></script>
+	<script src="//js.leapmotion.com/leap-plugins-0.1.8.js"></script>
 	<script type="text/javascript">
 		var socket = io.connect('/');
 		var pencil = new Pencil();
@@ -36,12 +38,21 @@
 			pencil.drawPusher(playerStorage2[0], playerStorage2[1], playerStorage2[2]);
 		});
 
-		$('#gameCanvas').on( "mousemove", function( event ) {
-			socket.emit('mouseMove', {x: event.pageX, y: event.pageY});
+		// $('#gameCanvas').on( "mousemove", function( event ) {
+		// 	socket.emit('mouseMove', {x: event.pageX, y: event.pageY});
+		// 	console.log({x: event.pageX, y: event.pageY});
+		// });
+
+		Leap.loop({enableGestures:true}, function(frame){
+		    if(frame.hands.length > 0) {
+		        var hand = frame.hands[0];
+		        var position = hand.palmPosition;
+		        var velocity = hand.palmVelocity;
+		        var direction = hand.direction;
+		        console.log({x: Math.round(position[0] + 350), y: Math.round(position[2] + 350)});
+				socket.emit('mouseMove', {x: Math.round(position[0] * 2 + 350), y: Math.round(position[2] * 2 + 350)});
+		    }
 		});
-
-		
-
 	</script>
 </body>
 </html>
