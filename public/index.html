@@ -38,10 +38,10 @@
 			pencil.drawPusher(playerStorage2[0], playerStorage2[1], playerStorage2[2]);
 		});
 
-		// $('#gameCanvas').on( "mousemove", function( event ) {
-		// 	socket.emit('mouseMove', {x: event.pageX, y: event.pageY});
-		// 	console.log({x: event.pageX, y: event.pageY});
-		// });
+		$('#gameCanvas').on( "mousemove", function( event ) {
+			socket.emit('mouseMove', {x: event.pageX, y: event.pageY});
+			console.log({x: event.pageX, y: event.pageY});
+		});
 
 		Leap.loop({enableGestures:true}, function(frame){
 		    if(frame.hands.length > 0) {
