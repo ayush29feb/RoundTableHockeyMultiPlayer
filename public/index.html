@@ -50,7 +50,7 @@
 		        var velocity = hand.palmVelocity;
 		        var direction = hand.direction;
 		        console.log({x: Math.round(position[0] + 350), y: Math.round(position[2] + 350)});
-				socket.emit('mouseMove', {x: Math.round(position[0] * 2 + 350), y: Math.round(position[2] * 2 + 350)});
+				socket.emit('mouseMove', {x: Math.round(position[0] * 3 + 350), y: Math.round(position[2] * 3 + 350)});
 		    }
 		});
 	</script>
